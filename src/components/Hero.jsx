@@ -109,7 +109,7 @@ const Hero = () => {
               Keep Track of your important Stocks at one place
             </h3>
             <p className=" text-2xl text-slate-500 font-semibold">
-              Get latest price of your stacks with real time updates.
+              Real-time stock prices for international markets.
             </p>
           </div>
           <div className="relative basis-[450px] w-full sm:w-auto">{svg}</div>

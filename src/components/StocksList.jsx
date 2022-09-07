@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { WatchListContext } from "../utils/ContextProvider";
 import finnhub from "../Api/finnhub";
-import Table from "./Table";
+// import Table from "./Table";
 
 const StocksList = () => {
   const [stocks, setStocks] = useState([]);
-  const [watchList, setWatchList] = useState(["MSFT", "AMZN", "GOOGL"]);
+  const { watchList } = useContext(WatchListContext);
 
   useEffect(() => {
     let controller = new AbortController();
@@ -39,7 +40,7 @@ const StocksList = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [watchList]);
 
   return <div className="container">{/* <Table data={stocks} /> */}</div>;
 };
