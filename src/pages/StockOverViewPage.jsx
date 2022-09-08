@@ -7,7 +7,6 @@ import StocksList from "../components/StocksList";
 const StockOverViewPage = () => {
   return (
     <>
-      <Navbar />
       <Hero />
       <SearchBar />
       <StocksList />

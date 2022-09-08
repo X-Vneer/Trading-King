@@ -47,7 +47,7 @@ const SearchBar = () => {
     "relative  transition-all shadow-md  duration-300 mx-auto w-[250px] sm:w-[350px]  h-[250px] overflow-y-scroll bg-[#f9f9f9] p-4 rounded-lg  ";
 
   return (
-    <section className="py-[50px] bg-gradient-to-r from-slate-300 to-[#f9f9f9] min-h-[400px] ">
+    <section className="py-[50px] bg-gradient-to-r from-slate-300 to-[#f9f9f9] h-[200px] ">
       <div className="container flex justify-center items-center gap-3 ">
         <div className="relative">
           <input

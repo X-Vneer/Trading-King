@@ -2,9 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import StockOverviewPage from "./pages/StockOverViewPage";
 import StockDetailsPage from "./pages/StockDetailsPage";
 import { WatchListContextProvider } from "./utils/ContextProvider";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
+      <Navbar />
       <WatchListContextProvider>
         <Routes>
           <Route path="/" element={<StockOverviewPage />} />
