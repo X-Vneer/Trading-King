@@ -1,8 +1,7 @@
-import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { WatchListContext } from "../utils/ContextProvider";
 import finnhub from "../Api/finnhub";
-// import Table from "./Table";
+import Table from "./Table";
 
 const StocksList = () => {
   const [stocks, setStocks] = useState([]);
@@ -12,7 +11,7 @@ const StocksList = () => {
     let controller = new AbortController();
     const fetchData = async () => {
       try {
-        const responses = await Promise.all(
+        const responses = await Promise.allSettled(
           watchList.map((stock) => {
             return finnhub.get("/quote", {
               params: {
@@ -24,13 +23,16 @@ const StocksList = () => {
         );
 
         const Data = responses.map((response) => {
+          if (response.status === "rejected") return;
           return {
-            data: response.data,
-            symbol: response.config.params.symbol,
+            data: response.value.data,
+            symbol: response.value.config.params.symbol,
           };
         });
-        setStocks(Data);
-        console.log(Data);
+        const filterdData = Data.filter((ele, ind) => ele);
+
+        setStocks(filterdData);
+        console.log(filterdData);
       } catch (err) {
         console.log(err);
       }
@@ -42,7 +44,13 @@ const StocksList = () => {
     };
   }, [watchList]);
 
-  return <div className="container">{/* <Table data={stocks} /> */}</div>;
+  return (
+    <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9] pb-20">
+      <div className="container">
+        <Table data={stocks} />{" "}
+      </div>
+    </div>
+  );
 };
 
 export default StocksList;

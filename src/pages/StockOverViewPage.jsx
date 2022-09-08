@@ -6,12 +6,12 @@ import StocksList from "../components/StocksList";
 
 const StockOverViewPage = () => {
   return (
-    <div className="pb-20">
+    <>
       <Navbar />
       <Hero />
       <SearchBar />
       <StocksList />
-    </div>
+    </>
   );
 };
 

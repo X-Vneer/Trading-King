@@ -3,10 +3,6 @@ import { createContext, useState } from "react";
 export const WatchListContext = createContext();
 export const WatchListContextProvider = (propes) => {
   const [watchList, setWatchList] = useState(["MSFT", "AMZN", "GOOGL"]);
-  console.log(
-    "🚀 ~ file: ContextProvider.jsx ~ line 6 ~ WatchListContextProvider ~ watchList",
-    watchList
-  );
 
   //   a function to add a stock to the watch list
   const addStock = (stock) => {

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Hero = () => {
   const svg = (
     <svg
@@ -100,7 +98,7 @@ const Hero = () => {
   return (
     <section className="bg-gradient-to-r from-slate-300 to-[#f9f9f9]">
       <div className="container py-[100px]">
-        <div className="flex flex-col sm:flex-row justify-between items-center min-h-[70vh]">
+        <div className="flex flex-col sm:flex-row justify-between items-center min-h-[50vh]">
           <div className="basis-[520px] text-center sm:text-left">
             <h1 className="text-5xl font-bold uppercase mb-6 text-gradient">
               Trading king
