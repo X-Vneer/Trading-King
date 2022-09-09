@@ -88,7 +88,12 @@ const Alert = () => {
                   <label htmlFor="never">Don't show this message again!</label>
                 </div>
                 <button
-                  onClick={() => setClosed(true)}
+                  onClick={() => {
+                    setClosed(true);
+                    if (isChecked) {
+                      localStorage.setItem("neverShow", true);
+                    }
+                  }}
                   className="bg-red-500 text-white font-semibold text-[18px] px-5 mt-5 hover:bg-red-700 transition-all  leading-none py-2 rounded-lg "
                 >
                   close

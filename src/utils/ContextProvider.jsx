@@ -3,14 +3,23 @@ import { createContext, useEffect, useState } from "react";
 export const WatchListContext = createContext();
 
 export const WatchListContextProvider = (propes) => {
-  const [watchList, setWatchList] = useState(["MSFT", "AMZN", "GOOGL"]);
+  const [watchList, setWatchList] = useState(
+    localStorage.getItem("watchList")?.split(",") || ["MSFT", "AMZN", "GOOGL"]
+  );
   const [isPhone, setIsPhone] = useState(false);
+  const [neverShow, setNeverShow] = useState(
+    localStorage.getItem("neverShow") || false
+  );
   useEffect(() => {
-    if (window.innerWidth <= "650") {
+    if (window.innerWidth <= "650" && !neverShow) {
       setIsPhone(true);
       screen.orientation.lock("portrait-primary").catch(console.log);
     }
   }, []);
+  // a useEffect to deal with local Storage
+  useEffect(() => {
+    localStorage.setItem("watchList", watchList);
+  }, [watchList]);
 
   //   a function to add a stock to the watch list
   const addStock = (stock) => {
