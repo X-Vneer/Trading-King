@@ -3,13 +3,8 @@ import { useState, useEffect } from "react";
 import finnhub from "../Api/finnhub";
 import { useContext } from "react";
 import { WatchListContext } from "../utils/ContextProvider";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
 
 const SearchBar = () => {
-  const MySwal = withReactContent(Swal);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const { addStock } = useContext(WatchListContext);
@@ -78,13 +73,6 @@ const SearchBar = () => {
               onClick={() => {
                 addStock(ele.symbol);
                 setSearch("");
-                MySwal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: `${ele.description.toLowerCase()} was added to your watch list successfully`,
-                  showConfirmButton: false,
-                  timer: 2500,
-                });
               }}
               key={ind}
               className="py-3 hover:bg-gray-200 px-1 transition-all border-b border-b-[#203446] flex gap-2 cursor-pointer items-center capitalize"

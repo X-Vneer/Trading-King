@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Table = ({ data }) => {
+const Table = ({ data, deleteStock }) => {
   const navigate = useNavigate();
   const handleNavigate = (symbol) => {
     navigate(`/Trading-King/Details/${symbol}`);
@@ -18,6 +18,7 @@ const Table = ({ data }) => {
           <th className="px-4 py-4 capitalize text-bold">Low</th>
           <th className="px-4 py-4 capitalize text-bold">Open</th>
           <th className="px-4 py-4 capitalize text-bold">Pclose</th>
+          <th className="px-4 py-4 capitalize text-bold">D/btn</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +27,7 @@ const Table = ({ data }) => {
             <tr
               onClick={() => handleNavigate(Stock?.symbol)}
               key={Stock.symbol || ind}
-              className="border border-b bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
+              className="border group border-b bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
             >
               <th className="bg-gray-100 px-4 py-3 capitalize font-semibold text-gray-600 ">
                 {Stock.symbol}
@@ -59,6 +60,17 @@ const Table = ({ data }) => {
               </td>
               <td className="px-4 py-3 text-sm md:text-base ">
                 {Stock.data?.pc}
+              </td>
+              <td className="px-1 py-2  ">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteStock(Stock.symbol);
+                  }}
+                  className="bg-red-500 hover:bg-red-600 hover:shadow-md transition-all invisible  group-hover:visible text-sm text-white font-semibold md:text-base px-3 py-1 rounded"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           );

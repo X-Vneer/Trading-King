@@ -3,8 +3,8 @@ import Chart from "react-apexcharts";
 
 const ChartComponent = ({ chartData, symbol }) => {
   const [dataFor, setDataFor] = useState("24h");
-
   const [{ Day }, { Week }, { Month }, { Year }] = chartData;
+
   const dataSwitch = () => {
     switch (dataFor) {
       case "24h":
@@ -21,20 +21,29 @@ const ChartComponent = ({ chartData, symbol }) => {
   };
 
   const options = {
-    title: {
-      text: symbol,
-      align: "center",
-
-      style: {
-        fontSize: "24px",
-      },
-    },
     chart: {
       id: "Stock data",
+      background: "#ffffffb3",
       animations: {
         enabled: true,
         easing: "easeinout",
         speed: 1200,
+      },
+
+      toolbar: {
+        show: true,
+        offsetX: 0,
+        offsetY: 0,
+        tools: {
+          download: true,
+          selection: true,
+          zoom: true,
+          zoomin: true,
+          zoomout: true,
+          pan: true,
+          reset: true | '<img src="/static/icons/reset.png" width="20">',
+          customIcons: [],
+        },
       },
     },
     xaxis: {
@@ -45,7 +54,7 @@ const ChartComponent = ({ chartData, symbol }) => {
     },
     tooltip: {
       x: {
-        format: "MMM dd HH:MM",
+        format: "MMM dd hh:MM TT",
       },
     },
     noData: {
@@ -59,34 +68,45 @@ const ChartComponent = ({ chartData, symbol }) => {
     },
   ];
   return (
-    <div className="w-full mx-auto lg:w-[70%]">
+    <div className="w-full mx-auto lg:w-[70%] p-5 rounded-xl shadow-lg bg-[rgba(255,255,255,.7)]  backdrop-blur-md ">
+      <h1 className="text-[25px] font-[900] text-gradient text-center mb-4 ">
+        {symbol}
+      </h1>
       <Chart
         options={options}
         series={series}
         type="candlestick"
         width="100%"
       />
-      <div className="flex gap-3  mt-5 ml-5">
+      <div className="flex gap-3  mt-5 ml-5 text-gray-700">
         <button
-          className="border border-blue-500 p-1 rounded-lg min-w-[40px] text-gray-700 text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-200 "
+          className={` chart-button ${
+            dataFor === "24h" && "bg-blue-600 text-white"
+          }`}
           onClick={() => setDataFor("24h")}
         >
           24H
         </button>
         <button
-          className="border border-blue-500 p-1 rounded-lg min-w-[40px] text-gray-700 text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-200 "
+          className={` chart-button ${
+            dataFor === "7d" && "bg-blue-600 text-white"
+          }`}
           onClick={() => setDataFor("7d")}
         >
           7D
         </button>
         <button
-          className="border border-blue-500 p-1 rounded-lg min-w-[40px] text-gray-700 text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-200 "
+          className={` chart-button ${
+            dataFor === "1m" && "bg-blue-600 text-white"
+          }`}
           onClick={() => setDataFor("1m")}
         >
           1M
         </button>
         <button
-          className="border border-blue-500 p-1 rounded-lg min-w-[40px] text-gray-700 text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-200 "
+          className={` chart-button ${
+            dataFor === "1y" && "bg-blue-600 text-white"
+          }`}
           onClick={() => setDataFor("1y")}
         >
           1Y

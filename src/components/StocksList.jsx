@@ -5,7 +5,7 @@ import Table from "./Table";
 
 const StocksList = () => {
   const [stocks, setStocks] = useState([]);
-  const { watchList } = useContext(WatchListContext);
+  const { watchList, deleteStock } = useContext(WatchListContext);
 
   useEffect(() => {
     let controller = new AbortController();
@@ -47,7 +47,9 @@ const StocksList = () => {
   return (
     <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9] pb-20">
       <div className="container">
-        <Table data={stocks} />{" "}
+        <div className=" overflow-x-scroll sm:overflow-auto py-5 ">
+          <Table data={stocks} deleteStock={deleteStock} />
+        </div>
       </div>
     </div>
   );

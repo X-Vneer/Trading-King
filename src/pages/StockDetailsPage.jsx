@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import finnhub from "../Api/finnhub";
 import { useParams } from "react-router-dom";
 import ChartComponent from "../components/ChartComponent";
+import Alert from "../components/Alert";
+import { WatchListContext } from "../utils/ContextProvider";
 
 const formateData = (arr) => {
   return arr?.map((obj) => {
@@ -21,6 +23,7 @@ const formateData = (arr) => {
   });
 };
 const StockDetailsPage = () => {
+  const { isPhone } = useContext(WatchListContext);
   const id = useParams();
 
   const [chartData, setChartData] = useState({});
@@ -47,7 +50,7 @@ const StockDetailsPage = () => {
           finnhub.get("/stock/candle", {
             params: {
               symbol: id.id,
-              resolution: 30,
+              resolution: 15,
               from: oneDayAgo,
               to: currentTime,
             },
@@ -114,20 +117,19 @@ const StockDetailsPage = () => {
     };
   }, [id.id]);
 
-  console.log(
-    "🚀 ~ file: StockDetailsPage.jsx ~ line 116 ~ StockDetailsPage ~ chartData",
-    chartData
-  );
   return (
-    <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9] ">
-      <div className="py-[100px]">
-        <div className="container">
-          {chartData.length > 0 && (
-            <ChartComponent chartData={chartData} symbol={id.id} />
-          )}
+    <>
+      {isPhone && <Alert />}
+      <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9]  min-h-screen">
+        <div className="py-[100px]">
+          <div className="container">
+            {chartData.length > 0 && (
+              <ChartComponent chartData={chartData} symbol={id.id} />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

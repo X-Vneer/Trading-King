@@ -71,7 +71,28 @@
 .mobile-list-item {
   @apply before:w-0 hover:before:w-[80%] before:transition-all before:duration-300 before:h-[4px] before:bg-gradient-to-tr before:from-[#5d56d8] before:to-[#c544fc] before:absolute before:left-[10%]  before:bottom-0  relative px-6 py-4 block;
 }
-@media (max-width: 670px) {
+.chart-button {
+  @apply border border-blue-500 p-1 px-2 rounded-lg min-w-[40px]  text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-200;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: radial-gradient(
+    64.18% 64.18% at 41.16% 25.69%,
+    #c544fc 0%,
+    #5d56d8 100%
+  );
+}
+
+@media (max-width: 780px) {
   * {
     cursor: default !important;
   }
