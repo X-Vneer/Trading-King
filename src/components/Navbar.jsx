@@ -11,7 +11,10 @@ const Navbar = () => {
     <nav className=" bg-[rgba(255,255,255,.7)] backdrop-blur-md z-50 sticky top-0 w-full">
       <div className="container  py-4">
         <div className="flex justify-between items-center relative">
-          <NavLink to="/" className="flex flex-row items-center gap-4">
+          <NavLink
+            to="/Trading-King"
+            className="flex flex-row items-center gap-4"
+          >
             <img src={logo} alt="trading king logo" className="h-[50px]" />
             <span className="font-bold text-[#203446] text-xl capitalize">
               trading king
@@ -23,7 +26,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   className="before:w-0 hover:before:w-[80%] before:transition-all before:duration-300 before:h-[4px] before:bg-gradient-to-tr before:from-[#5d56d8] before:to-[#c544fc] before:absolute before:left-[10%]  before:bottom-0  relative px-6 py-4 block "
-                  to="/"
+                  to="/Trading-King"
                 >
                   Home
                 </NavLink>
@@ -80,7 +83,7 @@ const Navbar = () => {
           <div className={`mobile-list ${opened ? "h-[290px]" : "h-0"}`}>
             <ul className="flex flex-col items-center font-semibold text-gray-600 gap-1  ">
               <li>
-                <NavLink className="mobile-list-item" to="/">
+                <NavLink className="mobile-list-item" to="/Trading-King">
                   Home
                 </NavLink>
               </li>
