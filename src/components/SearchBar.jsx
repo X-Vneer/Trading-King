@@ -63,10 +63,14 @@ const SearchBar = () => {
       </div>
       <ul
         className={
-          dropmenu +
-          `${searchResults?.length > 0 ? "z-10 top-1" : "-z-[1] top-20"}`
+          dropmenu + `${search?.length > 0 ? "z-10 top-1" : "-z-[1] top-20"}`
         }
       >
+        {search && !searchResults.length && (
+          <>
+            <p className="text-gray-600 font-bold text-center">Searching...</p>
+          </>
+        )}
         {searchResults?.map((ele, ind) => {
           return (
             <li
