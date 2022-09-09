@@ -68,7 +68,7 @@ const ChartComponent = ({ chartData, symbol }) => {
     },
   ];
   return (
-    <div className="w-full mx-auto lg:w-[70%] p-5 rounded-xl shadow-lg bg-[rgba(255,255,255,.7)]  backdrop-blur-md ">
+    <>
       <h1 className="text-[25px] font-[900] text-gradient text-center mb-4 ">
         {symbol}
       </h1>
@@ -112,7 +112,7 @@ const ChartComponent = ({ chartData, symbol }) => {
           1Y
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -91,6 +91,13 @@ html {
     #5d56d8 100%
   );
 }
+.stock-info p {
+  padding: 5px 0;
+  color: black;
+}
+.stock-info span {
+  font-weight: 600;
+}
 
 @media (max-width: 780px) {
   * {

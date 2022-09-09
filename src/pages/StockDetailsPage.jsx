@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ChartComponent from "../components/ChartComponent";
 import Alert from "../components/Alert";
 import { WatchListContext } from "../utils/ContextProvider";
+import StockData from "../components/StockData";
 
 const formateData = (arr) => {
   return arr?.map((obj) => {
@@ -123,9 +124,12 @@ const StockDetailsPage = () => {
       <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9]  min-h-screen">
         <div className="py-[100px]">
           <div className="container">
-            {chartData.length > 0 && (
-              <ChartComponent chartData={chartData} symbol={id.id} />
-            )}
+            <div className="w-full mx-auto lg:w-[70%] p-5 rounded-xl shadow-lg bg-[rgba(255,255,255,.7)]  backdrop-blur-md ">
+              {chartData.length > 0 && (
+                <ChartComponent chartData={chartData} symbol={id.id} />
+              )}
+              <StockData symbol={id.id} />
+            </div>
           </div>
         </div>
       </div>
