@@ -7,9 +7,10 @@ function App() {
   return (
     <>
       <Navbar />
+
       <WatchListContextProvider>
         <Routes>
-          <Route path="/" element={<StockOverviewPage />} />
+          <Route path="/Trading-King" element={<StockOverviewPage />} />
           <Route
             path="/Trading-King/Details/:id"
             element={<StockDetailsPage />}
