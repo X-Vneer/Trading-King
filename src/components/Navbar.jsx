@@ -61,11 +61,13 @@ const Navbar = () => {
               alt="twitter"
               className="w-[25px] cursor-pointer"
             />
-            <img
-              src={github}
-              alt="github"
-              className="w-[25px]  cursor-pointer"
-            />
+            <a target="_blank" href="https://github.com/X-Vneer/Trading-King">
+              <img
+                src={github}
+                alt="github"
+                className="w-[25px]  cursor-pointer"
+              />
+            </a>
           </div>
           <button
             id="menu-btn"
@@ -109,11 +111,13 @@ const Navbar = () => {
                 alt="twitter"
                 className="w-[25px] cursor-pointer"
               />
-              <img
-                src={github}
-                alt="github"
-                className="w-[25px]  cursor-pointer"
-              />
+              <a target="_blank" href="https://github.com/X-Vneer/Trading-King">
+                <img
+                  src={github}
+                  alt="github"
+                  className="w-[25px]  cursor-pointer"
+                />
+              </a>
             </div>
           </div>
         </div>

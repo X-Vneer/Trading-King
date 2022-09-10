@@ -67,7 +67,7 @@ const Table = ({ data, deleteStock }) => {
                     e.stopPropagation();
                     deleteStock(Stock.symbol);
                   }}
-                  className="bg-red-500 hover:bg-red-600 hover:shadow-md transition-all invisible  group-hover:visible text-sm text-white font-semibold md:text-base px-3 py-1 rounded"
+                  className="bg-red-500 hover:bg-red-600 hover:shadow-md transition-all  text-sm text-white font-semibold md:text-base px-3 py-1 rounded"
                 >
                   Delete
                 </button>

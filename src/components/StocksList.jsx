@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { WatchListContext } from "../utils/ContextProvider";
 import finnhub from "../Api/finnhub";
 import Table from "./Table";
+import SmallAlert from "./SmallAlert";
 
 const StocksList = () => {
   const [stocks, setStocks] = useState([]);
@@ -51,6 +52,10 @@ const StocksList = () => {
   return (
     <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9] pb-20">
       <div className="container">
+        <SmallAlert
+          text="please, click on the stock for more details."
+          color="red"
+        />
         <div className=" overflow-x-scroll sm:overflow-auto py-5 ">
           <Table data={stocks} deleteStock={deleteStock} />
         </div>
