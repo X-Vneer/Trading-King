@@ -1,11 +1,20 @@
 import React from "react";
+import { useContext } from "react";
+import { NavBarContext } from "../App";
 
 import SideLogo from "../components/SideLogo";
 import TextArea from "../components/TextArea";
 
 const TradingKingAboutUs = () => {
+  const [opened, setOpened] = useContext(NavBarContext);
+
   return (
-    <div className="py-[100px] bg-gradient-to-r from-slate-300 to-[#f9f9f9]">
+    <div
+      className="py-[100px] bg-gradient-to-r from-slate-300 to-[#f9f9f9]"
+      onClick={() => {
+        setOpened(false);
+      }}
+    >
       <div className="container">
         <div className="flex gap-6 flex-wrap justify-center lg:justify-around items-center">
           <SideLogo />

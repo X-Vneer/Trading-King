@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useContext } from "react";
+import { NavBarContext } from "../App";
 import logo from "../assets/crown.png";
-import twitter from "../assets/twitter.svg";
 import github from "../assets/github.svg";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [opened, setOpened] = useState(false);
-
+  const [opened, setOpened] = useContext(NavBarContext);
   return (
     <nav className=" bg-[rgba(255,255,255,.7)] backdrop-blur-md z-50 sticky top-0 w-full">
       <div className="container  py-4">
@@ -58,7 +57,8 @@ const Navbar = () => {
           </div>
           <button
             id="menu-btn"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setOpened((pre) => !pre);
             }}
             className={`block hamburger lg:hidden focus:outline-none ${

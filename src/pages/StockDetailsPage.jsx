@@ -5,6 +5,7 @@ import ChartComponent from "../components/ChartComponent";
 import Alert from "../components/Alert";
 import { WatchListContext } from "../utils/ContextProvider";
 import StockData from "../components/StockData";
+import { NavBarContext } from "../App";
 
 const formateData = (arr) => {
   return arr?.map((obj) => {
@@ -24,6 +25,8 @@ const formateData = (arr) => {
   });
 };
 const StockDetailsPage = () => {
+  const [opened, setOpened] = useContext(NavBarContext);
+
   const { isPhone } = useContext(WatchListContext);
   const id = useParams();
 
@@ -121,7 +124,12 @@ const StockDetailsPage = () => {
   return (
     <>
       {isPhone && <Alert />}
-      <div className="bg-gradient-to-r from-slate-300 to-[#f9f9f9]  min-h-screen">
+      <div
+        className="bg-gradient-to-r from-slate-300 to-[#f9f9f9]  min-h-screen"
+        onClick={(e) => {
+          setOpened(false);
+        }}
+      >
         <div className="py-[100px]">
           <div className="container">
             <div className="w-full mx-auto lg:w-[70%] p-5 rounded-xl shadow-lg bg-[rgba(255,255,255,.7)]  backdrop-blur-md ">
